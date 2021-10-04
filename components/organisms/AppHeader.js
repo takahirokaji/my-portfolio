@@ -3,9 +3,6 @@ import styled from "styled-components";
 import Image from "next/image";
 import logo from "../../public/logo.png";
 import Link from "next/link";
-import logo2 from "../../public/logo2.png";
-import works from "../../public/works.png";
-import aboutme from "../../public/aboutme.png";
 
 export const AppHeader = () => {
   const Links = [
@@ -37,14 +34,11 @@ export const AppHeader = () => {
 };
 
 const Header = styled.header`
+  grid-area: "header";
   background-color: white;
-  position: sticky;
-  position: -webkit-sticky;
   z-index: 10;
   top: 0;
   padding: 1em;
-  width: 100%;
-  height: 80px;
   border-bottom: 1px solid #5b6775;
   display: flex;
   justify-content: left;
@@ -61,6 +55,6 @@ const Header = styled.header`
 `;
 
 const ImageContainer = styled.div`
-  display: inline;
-  margin: 0 1em;
+  margin: 0 1rem;
+  padding-top: 0.5em;
 `;
