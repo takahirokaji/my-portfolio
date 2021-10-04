@@ -1,19 +1,55 @@
-import { Box } from "@chakra-ui/react";
+import * as React from "react";
 import styled from "styled-components";
 import Image from "next/image";
 
-export function AppCard() {
+const AppCard = (props) => {
   return (
     <>
-      <h1>App　名</h1>
-      <Image
-        src={"https://source.unsplash.com/random"}
-        width={100}
-        height={100}
-        alt={"this is app image"}
-      ></Image>
+      <Card onClick={props.onClickEvent}>
+        <Image
+          className="app-image"
+          src={props.image}
+          width={400}
+          height={250}
+          alt={"this is app image"}
+        ></Image>
+        <Explain>
+          <h1>{props.name}</h1>
+          <h2>{props.info}</h2>
+        </Explain>
+      </Card>
     </>
   );
-}
+};
 
-const card = styled.div``;
+const Card = styled.div`
+  margin: 1.5%;
+  position: relative;
+  .app-image {
+    border-radius: 10px;
+    filter: brightness(0.6);
+    transition: filter 0.5s;
+    &:hover {
+      cursor: pointer;
+      filter: none;
+      transition: filter 1s;
+    }
+  }
+`;
+
+const Explain = styled.div`
+  position: absolute;
+  bottom: 1em;
+  left: 1em;
+  font-weight: bold;
+  color: white;
+  h1 {
+    font-size: 1.5em;
+    line-height: 1em;
+  }
+  h2 {
+    font-size: 0.8em;
+  }
+`;
+
+export default AppCard;
