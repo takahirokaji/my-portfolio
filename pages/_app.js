@@ -9,7 +9,6 @@ function MyApp({ Component, pageProps }) {
         <title>kaji&apos;s portfolio</title>
         <meta name="description" content="portfolio made by kaji takahiro" />
         <link rel="icon" href="/favicon.ico" />
-        <link rel="stylesheet" href="dist/devices.css"></link>
       </Head>
       <Layout>
         <Component {...pageProps} />
