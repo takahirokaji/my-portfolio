@@ -10,14 +10,27 @@ const Details = () => {
 
   return (
     <>
-      <WorksContainer>
+      <GridContainer>
         <ApplicationSumpleContainer>
-          <Image
-            src={imageURL}
-            alt={"this is pinplage Image"}
-            layout="fill"
-            objectFit="contain"
-          ></Image>
+          <ApplicationFrame>
+            <ImageTest>
+              <Image
+                src={imageURL}
+                alt={"this is pinplage Image"}
+                width={200}
+                height={432.85}
+                objectFit={"contain"}
+              ></Image>
+            </ImageTest>
+            <FrameTest>
+              <Image
+                src={frame}
+                alt={"this is pinplage Image"}
+                width={250}
+                height={505}
+              ></Image>
+            </FrameTest>
+          </ApplicationFrame>
         </ApplicationSumpleContainer>
 
         <DetailsContainer>
@@ -92,25 +105,29 @@ const Details = () => {
           </Content>
           <Content></Content>
         </DetailsContainer>
-      </WorksContainer>
+      </GridContainer>
     </>
   );
 };
 
 export default Details;
 
-const WorksContainer = styled.div`
+const GridContainer = styled.div`
   display: grid;
+  height: 80vh;
+
+  grid-template-columns: 3fr 5fr;
 `;
 
 const ApplicationSumpleContainer = styled.div`
-  position: fixed;
-  height: 60vh;
-  width: 30vw;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 `;
 
 const DetailsContainer = styled.div`
-  max-width: 60vw;
+  overflow-y: scroll;
+  /* max-width: 60vw; */
   font-size: 4px;
   padding: 5em;
 `;
@@ -149,3 +166,16 @@ const ExplainContainer = styled.div`
     }
   }
 `;
+
+const ApplicationFrame = styled.div`
+  position: relative;
+  padding: 15px;
+`;
+
+const FrameTest = styled.div`
+  position: absolute;
+  top: 0;
+  left: 0;
+`;
+
+const ImageTest = styled.div``;

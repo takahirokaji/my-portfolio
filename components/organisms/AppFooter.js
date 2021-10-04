@@ -22,7 +22,6 @@ export const AppFooter = () => {
 
 const Footer = styled.footer`
   width: 100vw;
-  height: 100px;
   border-top: 1px solid #eaeaea;
   display: flex;
   align-items: center;

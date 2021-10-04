@@ -1,5 +1,5 @@
 import "modern-css-reset/dist/reset.min.css";
-import "../styles/globals.css";
+import "../styles/globals.scss";
 import Head from "next/head";
 import Layout from "../components/layouts/layout.js";
 function MyApp({ Component, pageProps }) {
@@ -9,7 +9,6 @@ function MyApp({ Component, pageProps }) {
         <title>kaji&apos;s portfolio</title>
         <meta name="description" content="portfolio made by kaji takahiro" />
         <link rel="icon" href="/favicon.ico" />
-        <link rel="stylesheet" href="dist/devices.css"></link>
       </Head>
       <Layout>
         <Component {...pageProps} />
