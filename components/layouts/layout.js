@@ -5,13 +5,26 @@ import styled from "styled-components";
 export default function Layout({ children }) {
   return (
     <>
-      <Header />
-      <Main>{children}</Main>
-      <Footer />
+      <Grid>
+        <Header />
+        <Main>{children}</Main>
+        <Footer />
+      </Grid>
     </>
   );
 }
 
+const Grid = styled.div`
+  height: 100vh;
+  display: grid;
+  grid-template-rows: 10vh 80vh 10vh;
+
+  grid-template-areas:
+    "header"
+    "main"
+    "footer";
+`;
+
 const Main = styled.main`
-  min-height: 80vh;
+  overflow-y: scroll;
 `;
