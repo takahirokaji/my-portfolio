@@ -4,63 +4,18 @@ import AppCard from "../../components/atom/AppCard";
 import Link from "next/link";
 import Router from "next/router";
 import styled from "styled-components";
+import { collection, getDocs } from "firebase/firestore";
+import { firestore } from "../../lib/firebase";
 
 export default function Home() {
+  const getData = async () => {
+    const querySnapshot = await getDocs(collection(firestore, "works"));
+    querySnapshot.forEach((doc) => {
+      console.log(doc.id, " => ", doc.data());
+    });
+  };
+  getData();
   const appData = [
-    {
-      id: 1,
-      name: "パンプラージュ",
-      info: "大学内の情報を一元化することによる大学生支援サービス",
-      image: "https://source.unsplash.com/random",
-    },
-    {
-      id: 2,
-      name: "ゴミアプリ",
-      info: "ゴミの通知をしてくれるゴミのアプリ",
-      image: "https://source.unsplash.com/random",
-    },
-    {
-      id: 3,
-      name: "On-be",
-      info: "あの会話を取り戻したい！",
-      image: "https://source.unsplash.com/random",
-    },
-    {
-      id: 1,
-      name: "パンプラージュ",
-      info: "大学内の情報を一元化することによる大学生支援サービス",
-      image: "https://source.unsplash.com/random",
-    },
-    {
-      id: 2,
-      name: "ゴミアプリ",
-      info: "ゴミの通知をしてくれるゴミのアプリ",
-      image: "https://source.unsplash.com/random",
-    },
-    {
-      id: 3,
-      name: "On-be",
-      info: "あの会話を取り戻したい！",
-      image: "https://source.unsplash.com/random",
-    },
-    {
-      id: 1,
-      name: "パンプラージュ",
-      info: "大学内の情報を一元化することによる大学生支援サービス",
-      image: "https://source.unsplash.com/random",
-    },
-    {
-      id: 2,
-      name: "ゴミアプリ",
-      info: "ゴミの通知をしてくれるゴミのアプリ",
-      image: "https://source.unsplash.com/random",
-    },
-    {
-      id: 3,
-      name: "On-be",
-      info: "あの会話を取り戻したい！",
-      image: "https://source.unsplash.com/random",
-    },
     {
       id: 1,
       name: "パンプラージュ",
