@@ -133,18 +133,18 @@ const DetailsContainer = styled.div`
 `;
 
 const Title = styled.h1`
-  font-size: 8em;
+  font-size: 8rem;
   font-weight: bold;
   color: #27a7fa;
 `;
 
 const SubTitle = styled.h2`
-  font-size: 6em;
+  font-size: 6rem;
   color: #27a7fa;
 `;
 
 const Content = styled.div`
-  margin: 4em;
+  margin: 4rem;
 `;
 
 const ExplainContainer = styled.div`

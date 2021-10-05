@@ -8,43 +8,50 @@ export const AppHeader = () => {
   const Links = [
     { key: "works", href: "/works" },
     { key: "about", href: "/history" },
+    { key: "contact", href: "/history" },
   ];
   return (
     <>
-      <Header>
-        <ImageContainer>
-          <Image
-            src={logo}
-            alt="this is logo"
-            quality={100}
-            width={100}
-            height={38}
-          ></Image>
-        </ImageContainer>
-        {Links.map((data) => {
-          return (
-            <Link href={data.href} key={data.key}>
-              <a>{data.key}</a>
-            </Link>
-          );
-        })}
-      </Header>
+      <HeaderBase>
+        <HeaderLayout>
+          <ImageContainer>
+            <Image
+              src={logo}
+              alt="this is logo"
+              quality={100}
+              width={100}
+              height={35}
+            ></Image>
+          </ImageContainer>
+          {Links.map((data) => {
+            return (
+              <Link href={data.href} key={data.key}>
+                <a>{data.key}</a>
+              </Link>
+            );
+          })}
+        </HeaderLayout>
+      </HeaderBase>
     </>
   );
 };
 
-const Header = styled.header`
+const HeaderBase = styled.header`
   grid-area: "header";
-  background-color: white;
+  background-color: #5b677520;
   z-index: 10;
-  top: 0;
-  padding: 1em;
-  border-bottom: 1px solid #5b6775;
+`;
+
+const HeaderLayout = styled.div`
+  height: 10vh;
+  padding: 4rem;
   display: flex;
   justify-content: left;
   align-items: center;
+  flex-direction: row;
   a {
-    margin: 0 1em;
+    font-size: 4rem;
+    margin: 0 2rem;
     font-weight: bold;
     color: #4e4e4e;
     &:hover {
@@ -55,6 +62,7 @@ const Header = styled.header`
 `;
 
 const ImageContainer = styled.div`
-  margin: 0 1rem;
+  margin: 0 4rem;
   padding-top: 0.5em;
+  max-width: 25rem;
 `;
