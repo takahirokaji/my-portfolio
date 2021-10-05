@@ -39,16 +39,17 @@ const Card = styled.div`
 
 const Explain = styled.div`
   position: absolute;
-  bottom: 1em;
-  left: 1em;
+  bottom: 5rem;
+  left: 5rem;
+  padding-right: 2rem;
   font-weight: bold;
   color: white;
   h1 {
-    font-size: 1.5em;
-    line-height: 1em;
+    font-size: 5rem;
   }
   h2 {
-    font-size: 0.8em;
+    font-size: 3rem;
+    overflow-x: hidden;
   }
 `;
 
