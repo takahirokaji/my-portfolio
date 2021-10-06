@@ -1,16 +1,27 @@
 import * as React from "react";
 import styled from "styled-components";
+import AppButton from "../components/atom/AppButton";
+import Router from "next/router";
 
 export default function Home() {
+  const Links = [
+    { key: "works", href: "/works", label: "作品集" },
+    { key: "about", href: "/history", label: "私について" },
+  ];
+  const pushPage = (href) => {
+    console.log(href);
+    Router.push(href);
+  };
   return (
     <FlexContainer>
-      <Introduction>
-        本日は、Ks Port にお越しいただきありがとうございます。 K,s Port
-        はのポートフォリオサイトになっております。
-      </Introduction>
-      <Introduction>過去の制作物の一覧は こちら から</Introduction>
-      <Introduction>私については こちら から</Introduction>
-      <Introduction>私の連絡先は こちら から</Introduction>
+      <Introduction>お越しいただきありがとうございます。</Introduction>
+      {Links.map((data) => {
+        return (
+          <AppButton onClickEvent={() => pushPage(data.href)} key={data.key}>
+            {data.label}はこちらから
+          </AppButton>
+        );
+      })}
     </FlexContainer>
   );
 }
@@ -24,5 +35,8 @@ const FlexContainer = styled.div`
 `;
 
 const Introduction = styled.p`
-  font-size: 5rem;
+  font-size: 10rem;
+  max-width: 90%;
+  padding: 0.75em;
+  margin: 0.8em;
 `;

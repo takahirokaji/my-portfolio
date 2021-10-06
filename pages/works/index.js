@@ -8,8 +8,6 @@ import { collection, getDocs } from "firebase/firestore";
 import { firestore } from "../../lib/firebase";
 
 export default function Home(props) {
-  console.log(props);
-
   const showCard = () => {
     console.log("hello from parent");
   };
