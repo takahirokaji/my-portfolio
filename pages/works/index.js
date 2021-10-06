@@ -22,18 +22,6 @@ export default function Home() {
       info: "大学内の情報を一元化することによる大学生支援サービス",
       image: "https://source.unsplash.com/random",
     },
-    {
-      id: 2,
-      name: "ゴミアプリ",
-      info: "ゴミの通知をしてくれるゴミのアプリ",
-      image: "https://source.unsplash.com/random",
-    },
-    {
-      id: 3,
-      name: "On-be",
-      info: "あの会話を取り戻したい！",
-      image: "https://source.unsplash.com/random",
-    },
   ];
   const showCard = () => {
     console.log("hello from parent");
