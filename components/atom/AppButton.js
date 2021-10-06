@@ -1,25 +1,21 @@
 import React from "react";
 import styled from "styled-components";
 
-export const AppButton = () => {
-  const sayFuck = () => {
-    console.log("fuck you");
-  };
-
+const AppButton = (props) => {
   return (
-    <Button primary colorScheme="teal" size="xs" onClick={sayFuck}>
-      hello
-    </Button>
+    <Button onClick={(el) => props.onClickEvent(el)}>{props.children}</Button>
   );
 };
 
 const Button = styled.button`
-  background: ${(props) => (props.primary ? "palevioletred" : "white")};
-  color: ${(props) => (props.primary ? "white" : "palevioletred")};
-
-  font-size: 1em;
+  font-size: 5rem;
+  padding: 1em 2em;
+  border: none;
+  background-color: #ffffff00;
+  border: 1px solid #b12a1c;
+  color: #b12a1c;
+  border-radius: 2.5em;
   margin: 1em;
-  padding: 0.25em 1em;
-  border: 2px solid "#fafa";
-  border-radius: 3px;
 `;
+
+export default AppButton;

@@ -8,7 +8,6 @@ export const AppHeader = () => {
   const Links = [
     { key: "works", href: "/works" },
     { key: "about", href: "/history" },
-    { key: "contact", href: "/history" },
   ];
   return (
     <>

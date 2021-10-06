@@ -3,7 +3,6 @@ import styled from "styled-components";
 import Image from "next/image";
 
 const AppCard = (props) => {
-  console.log(props.Imgurl);
   return (
     <>
       <Card onClick={props.onClickEvent}>
