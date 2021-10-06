@@ -3,14 +3,16 @@ import styled from "styled-components";
 import Image from "next/image";
 
 const AppCard = (props) => {
+  console.log(props.Imgurl);
   return (
     <>
       <Card onClick={props.onClickEvent}>
         <Image
           className="app-image"
-          src={props.image}
+          src={props.Imgurl}
           width={400}
           height={250}
+          quality={100}
           alt={"this is app image"}
         ></Image>
         <Explain>
@@ -27,12 +29,19 @@ const Card = styled.div`
   position: relative;
   .app-image {
     border-radius: 10px;
-    filter: brightness(0.6);
+    filter: brightness(0.4);
     transition: filter 0.5s;
-    &:hover {
-      cursor: pointer;
+  }
+  &:hover {
+    cursor: pointer;
+    .app-image {
       filter: none;
       transition: filter 1s;
+    }
+    h1,
+    h2 {
+      opacity: 0;
+      transition: 1s;
     }
   }
 `;
@@ -41,7 +50,6 @@ const Explain = styled.div`
   position: absolute;
   bottom: 5rem;
   left: 5rem;
-  padding-right: 2rem;
   font-weight: bold;
   color: white;
   h1 {

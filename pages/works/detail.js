@@ -6,8 +6,7 @@ import frame from "../../public/iphone_frame.png";
 const Details = () => {
   const teckList = ["vue.js", "firebase", "TypeScript"];
   const imageURL =
-    "https://firebasestorage.googleapis.com/v0/b/k-s-port.appspot.com/o/IMG_224D831531E4-1.jpeg?alt=media&token=29eb96b4-63ee-4018-a205-4c64357bd1bf";
-
+    "https://firebasestorage.googleapis.com/v0/b/k-s-port.appspot.com/o/pinplage_logo_eng.png?alt=media&token=cc987271-f4fa-408e-92a7-4df7d3397477";
   return (
     <>
       <GridContainer>
@@ -144,7 +143,7 @@ const SubTitle = styled.h2`
 `;
 
 const Content = styled.div`
-  margin: 4rem;
+  margin: 4em;
 `;
 
 const ExplainContainer = styled.div`

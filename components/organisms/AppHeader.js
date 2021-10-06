@@ -15,18 +15,20 @@ export const AppHeader = () => {
       <HeaderBase>
         <HeaderLayout>
           <ImageContainer>
-            <Image
-              src={logo}
-              alt="this is logo"
-              quality={100}
-              width={100}
-              height={35}
-            ></Image>
+            <Link href="/" passHref>
+              <Image
+                src={logo}
+                alt="this is logo"
+                quality={100}
+                width={100}
+                height={35}
+              ></Image>
+            </Link>
           </ImageContainer>
           {Links.map((data) => {
             return (
-              <Link href={data.href} key={data.key}>
-                <a>{data.key}</a>
+              <Link href={data.href} key={data.key} passHref>
+                <PageAnchor>{data.key}</PageAnchor>
               </Link>
             );
           })}
@@ -49,20 +51,21 @@ const HeaderLayout = styled.div`
   justify-content: left;
   align-items: center;
   flex-direction: row;
-  a {
-    font-size: 4rem;
-    margin: 0 2rem;
-    font-weight: bold;
-    color: #4e4e4e;
-    &:hover {
-      color: #b12a1c;
-      cursor: pointer;
-    }
-  }
 `;
 
 const ImageContainer = styled.div`
   margin: 0 4rem;
   padding-top: 0.5em;
   max-width: 25rem;
+`;
+
+const PageAnchor = styled.a`
+  font-size: 4rem;
+  margin: 0 2rem;
+  font-weight: bold;
+  color: #4e4e4e;
+  &:hover {
+    color: #b12a1c;
+    cursor: pointer;
+  }
 `;

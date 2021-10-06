@@ -7,34 +7,9 @@ import styled from "styled-components";
 import { collection, getDocs } from "firebase/firestore";
 import { firestore } from "../../lib/firebase";
 
-export default function Home() {
-  const getData = async () => {
-    const querySnapshot = await getDocs(collection(firestore, "works"));
-    querySnapshot.forEach((doc) => {
-      console.log(doc.id, " => ", doc.data());
-    });
-  };
-  getData();
-  const appData = [
-    {
-      id: 1,
-      name: "パンプラージュ",
-      info: "大学内の情報を一元化することによる大学生支援サービス",
-      image: "https://source.unsplash.com/random",
-    },
-    {
-      id: 2,
-      name: "ゴミアプリ",
-      info: "ゴミの通知をしてくれるゴミのアプリ",
-      image: "https://source.unsplash.com/random",
-    },
-    {
-      id: 3,
-      name: "On-be",
-      info: "あの会話を取り戻したい！",
-      image: "https://source.unsplash.com/random",
-    },
-  ];
+export default function Home(props) {
+  console.log(props);
+
   const showCard = () => {
     console.log("hello from parent");
   };
@@ -44,13 +19,13 @@ export default function Home() {
 
   return (
     <Flex>
-      {appData.map((data) => {
+      {props.works.map((data) => {
         return (
           <AppCard
             key={data.id}
-            name={data.name}
+            name={data.title}
             info={data.info}
-            image={data.image}
+            Imgurl={data.Imgurl}
             onClickEvent={(showCard, handler)}
           />
         );
@@ -58,6 +33,23 @@ export default function Home() {
     </Flex>
   );
 }
+
+export const getStaticProps = async () => {
+  const worksSnapshot = await getDocs(collection(firestore, "works"));
+  let works = [];
+  worksSnapshot.forEach((doc) => {
+    works.push({
+      id: doc.id,
+      info: doc.data().info,
+      title: doc.data().name.ja,
+      Imgurl: doc.data().thumbnail,
+    });
+    console.log(works);
+  });
+  return {
+    props: { works },
+  };
+};
 
 const Flex = styled.div`
   display: flex;

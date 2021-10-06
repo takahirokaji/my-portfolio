@@ -6,7 +6,7 @@ export default function Home() {
     <FlexContainer>
       <Introduction>
         本日は、Ks Port にお越しいただきありがとうございます。 K,s Port
-        は私のポートフォリオサイトになっております。
+        はのポートフォリオサイトになっております。
       </Introduction>
       <Introduction>過去の制作物の一覧は こちら から</Introduction>
       <Introduction>私については こちら から</Introduction>
