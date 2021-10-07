@@ -8,14 +8,21 @@ const AppButton = (props) => {
 };
 
 const Button = styled.button`
-  font-size: 5rem;
-  padding: 1em 2em;
+  font-size: 6rem;
+  padding: 0.5em 1em;
   border: none;
   background-color: #ffffff00;
   border: 1px solid #b12a1c;
   color: #b12a1c;
   border-radius: 2.5em;
-  margin: 1em;
+  margin: 0.25em;
+  :hover {
+    cursor: pointer;
+  }
+  :active {
+    background-color: #b12a1c;
+    color: white;
+  }
 `;
 
 export default AppButton;
