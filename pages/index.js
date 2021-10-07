@@ -5,8 +5,8 @@ import Router from "next/router";
 
 export default function Home() {
   const Links = [
-    { key: "works", href: "/works", label: "作品集" },
-    { key: "about", href: "/history", label: "私について" },
+    { key: "works", href: "/works", label: "works" },
+    { key: "about", href: "/history", label: "about me" },
   ];
   const pushPage = (href) => {
     console.log(href);
@@ -15,13 +15,15 @@ export default function Home() {
   return (
     <FlexContainer>
       <Introduction>お越しいただきありがとうございます。</Introduction>
-      {Links.map((data) => {
-        return (
-          <AppButton onClickEvent={() => pushPage(data.href)} key={data.key}>
-            {data.label}はこちらから
-          </AppButton>
-        );
-      })}
+      <ButtonContainer>
+        {Links.map((data) => {
+          return (
+            <AppButton onClickEvent={() => pushPage(data.href)} key={data.key}>
+              {data.label}
+            </AppButton>
+          );
+        })}
+      </ButtonContainer>
     </FlexContainer>
   );
 }
@@ -29,7 +31,7 @@ export default function Home() {
 const FlexContainer = styled.div`
   display: flex;
   flex-direction: column;
-  height: 80vh;
+  height: 90vh;
   justify-content: center;
   align-items: center;
 `;
@@ -39,4 +41,8 @@ const Introduction = styled.p`
   max-width: 90%;
   padding: 0.75em;
   margin: 0.8em;
+`;
+
+const ButtonContainer = styled.div`
+  display: flex;
 `;

@@ -8,7 +8,6 @@ export default function Layout({ children }) {
       <Grid>
         <Header />
         <Main>{children}</Main>
-        <Footer />
       </Grid>
     </>
   );
@@ -17,7 +16,7 @@ export default function Layout({ children }) {
 const Grid = styled.div`
   height: 100vh;
   display: grid;
-  grid-template-rows: 10vh 80vh 10vh;
+  grid-template-rows: 10vh 90vh;
 
   grid-template-areas:
     "header"
