@@ -57,5 +57,6 @@ const Flex = styled.div`
   flex-direction: row;
   flex-wrap: wrap;
   justify-content: center;
+  height: 90vh;
   padding: 1em;
 `;
