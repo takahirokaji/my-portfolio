@@ -4,7 +4,7 @@ import AppCard from "../../components/atom/AppCard";
 import Link from "next/link";
 import Router from "next/router";
 import styled from "styled-components";
-import { collection, getDocs } from "firebase/firestore";
+import { collection, getDocs, query, orderBy } from "firebase/firestore";
 import { firestore } from "../../lib/firebase";
 
 export default function Home(props) {
@@ -33,7 +33,9 @@ export default function Home(props) {
 }
 
 export const getStaticProps = async () => {
-  const worksSnapshot = await getDocs(collection(firestore, "works"));
+  // const worksSnapshot = await getDocs(collection(firestore, "works"));
+  const q = query(collection(firestore, "works"), orderBy("priority"));
+  const worksSnapshot = await getDocs(q);
   let works = [];
   worksSnapshot.forEach((doc) => {
     works.push({
