@@ -19,8 +19,8 @@ const Grid = styled.div`
 
   grid-template-areas:
     "header"
-    "main"
-    "footer";
+    "main";
+  /* "footer"; */
 `;
 
 const Main = styled.main`
