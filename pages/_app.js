@@ -7,7 +7,7 @@ function MyApp({ Component, pageProps }) {
     <>
       <Head>
         <title>kaji&apos;s portfolio</title>
-        <meta name="description" content="portfolio made by kaji takahiro" />
+        <meta name="description" content="Kaji's portfolio" />
         <link
           rel="apple-touch-icon"
           sizes="180x180"
