@@ -2,8 +2,13 @@ import * as React from "react";
 import styled from "styled-components";
 import Image from "next/image";
 import frame from "../../public/iphone_frame.png";
+import Router from "next/router";
+import { firestore } from "../../lib/firebase";
+import { doc, getDoc, collection, getDocs } from "firebase/firestore";
+import { async } from "@firebase/util";
 
-const Details = () => {
+export default function Detail(props) {
+  console.log(props);
   const teckList = ["vue.js", "firebase", "TypeScript"];
   const imageURL =
     "https://firebasestorage.googleapis.com/v0/b/k-s-port.appspot.com/o/pinplage_logo_eng.png?alt=media&token=cc987271-f4fa-408e-92a7-4df7d3397477";
@@ -12,19 +17,18 @@ const Details = () => {
       <GridContainer>
         <ApplicationSumpleContainer>
           <ApplicationFrame>
-            <ImageTest>
-              <Image
-                src={imageURL}
-                alt={"this is pinplage Image"}
-                width={200}
-                height={432.85}
-                objectFit={"contain"}
-              ></Image>
-            </ImageTest>
+            <Image
+              src={imageURL}
+              alt={"this is pinplage Image"}
+              width={200}
+              height={432.85}
+              objectFit={"contain"}
+            ></Image>
             <FrameTest>
               <Image
                 src={frame}
                 alt={"this is pinplage Image"}
+                z
                 width={250}
                 height={505}
               ></Image>
@@ -44,72 +48,64 @@ const Details = () => {
           <Content>
             <SubTitle>説明</SubTitle>
             <ExplainContainer>
-              <p>
-                静岡大学浜松キャンパス生のためのアプリケーション。キャンパス内にちらばる情報を「パンプラージュ」に集めて提供することでカンタンに情報を入手し、キャンパスライフを支援するアプリ！
-              </p>
+              <p>{props.details.explain}</p>
             </ExplainContainer>
           </Content>
           <Content>
             <SubTitle>使用技術</SubTitle>
             <ExplainContainer>
               <ul>
-                {teckList.map((value, index) => {
+                {props.details.used_tech.map((value, index) => {
                   return <li key={index}>{value}</li>;
                 })}
               </ul>
             </ExplainContainer>
           </Content>
           <Content>
-            <SubTitle>各種リンク</SubTitle>
-            <ExplainContainer>
-              <p>
-                静岡大学浜松キャンパス生のためのアプリケーション。キャンパス内にちらばる情報を「パンプラージュ」に集めて提供することでカンタンに情報を入手し、キャンパスライフを支援するアプリ！
-              </p>
-            </ExplainContainer>
-          </Content>
-          <Content></Content>
-          <Title>パンプラージュ</Title>
-          <Content>
-            <SubTitle>ロゴタイプ</SubTitle>
-            <ExplainContainer>
-              <p>Ill insert logo here</p>
-            </ExplainContainer>
-          </Content>
-
-          <Content>
-            <SubTitle>説明</SubTitle>
-            <ExplainContainer>
-              <p>
-                静岡大学浜松キャンパス生のためのアプリケーション。キャンパス内にちらばる情報を「パンプラージュ」に集めて提供することでカンタンに情報を入手し、キャンパスライフを支援するアプリ！
-              </p>
-            </ExplainContainer>
-          </Content>
-          <Content>
-            <SubTitle>使用技術</SubTitle>
+            <SubTitle>自分がやったこと</SubTitle>
             <ExplainContainer>
               <ul>
-                {teckList.map((value, index) => {
+                {props.details.what_I_did.map((value, index) => {
                   return <li key={index}>{value}</li>;
                 })}
               </ul>
             </ExplainContainer>
           </Content>
-          <Content>
+          {/* <Content>
             <SubTitle>各種リンク</SubTitle>
             <ExplainContainer>
               <p>
                 静岡大学浜松キャンパス生のためのアプリケーション。キャンパス内にちらばる情報を「パンプラージュ」に集めて提供することでカンタンに情報を入手し、キャンパスライフを支援するアプリ！
               </p>
             </ExplainContainer>
-          </Content>
-          <Content></Content>
+          </Content> */}
         </DetailsContainer>
       </GridContainer>
     </>
   );
+}
+
+export const getStaticProps = async ({ params }) => {
+  let details;
+  const docRef = doc(firestore, `works/${params.details}/details/info`);
+  const snap = await getDoc(docRef);
+  details = snap.data();
+
+  return {
+    props: { details },
+  };
 };
 
-export default Details;
+export const getStaticPaths = async () => {
+  const ref = collection(firestore, "works");
+  const snap = await getDocs(ref);
+  const ids = snap.docs.map((doc) => doc.id);
+  const paths = ids.map((id) => `/works/${id}`);
+  return {
+    paths,
+    fallback: true,
+  };
+};
 
 const GridContainer = styled.div`
   display: grid;
@@ -134,12 +130,12 @@ const DetailsContainer = styled.div`
 const Title = styled.h1`
   font-size: 8rem;
   font-weight: bold;
-  color: #27a7fa;
+  color: #00cccc; ;
 `;
 
 const SubTitle = styled.h2`
   font-size: 6rem;
-  color: #27a7fa;
+  color: #00cccc; ;
 `;
 
 const Content = styled.div`
@@ -147,10 +143,7 @@ const Content = styled.div`
 `;
 
 const ExplainContainer = styled.div`
-  /* border-left: 4px solid #27a7fa; */
-  background-color: #4e4e4e10;
-  border-radius: 1em;
-  /* margin-left: 2.5em; */
+  border-left: 2px solid #00cccc;
   padding: 2.5em;
   p {
     font-size: 4em;
@@ -176,5 +169,3 @@ const FrameTest = styled.div`
   top: 0;
   left: 0;
 `;
-
-const ImageTest = styled.div``;
