@@ -9,7 +9,6 @@ export default function Home() {
     { key: "about", href: "/history", label: "about me" },
   ];
   const pushPage = (href) => {
-    console.log(href);
     Router.push(href);
   };
   return (

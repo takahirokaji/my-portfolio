@@ -3,9 +3,20 @@ import styled from "styled-components";
 import Image from "next/image";
 
 export default function history() {
-  const language = ["html5", "css3", "sass", "javascript", "Ruby"];
-  const teck = ["Vue.js", "React.js", "Nuxt.js", "Next.js", "Ruby on rails"];
-  const other = ["illustrator", "AdobeXD"];
+  const language = [["html5"], "css3", "sass", "javascript", "Ruby"];
+  const teck = [
+    "Vue.js",
+    "React.js",
+    "Nuxt.js",
+    "Next.js",
+    "Firebase",
+    "github",
+    "Ruby on rails",
+    "Docker",
+    "Heroku",
+    "MySQL",
+  ];
+  const other = ["illustrator", "AdobeXD", "figma"];
   const books = ["webを支える技術"];
   return (
     <FlexColumnContainer>
@@ -23,7 +34,9 @@ export default function history() {
         <TextInfo>
           <div>
             <h1>梶 貴広</h1>
-            <h2>静岡大学　総合科学技術研究科</h2>
+            <h2>現在：静岡大学　総合科学技術研究科 1年</h2>
+            <h2>21年3月：静岡大学　情報学部 行動情報学科 卒業</h2>
+            <h2>17年3月：静岡県立沼津東高等学校卒業</h2>
           </div>
         </TextInfo>
       </BaseInfoContainer>
@@ -35,11 +48,10 @@ export default function history() {
         <h2>好きなこと</h2>
         <DetailsText>
           <p>
-            僕の好きなことは色々あります。
             <ul>
               <li>ご飯を食べること</li>
               <li>音楽を聞くこと</li>
-              <li>なにかアプリを作ること</li>
+              <li>プログラミングをすること</li>
               <li>ゲームをすること</li>
               <li>筋トレをすること</li>
               <li>お酒を呑むこと</li>
@@ -49,14 +61,24 @@ export default function history() {
         <h2>将来なりたいもの</h2>
 
         <DetailsText>
-          <p>ウェブ系のエンジニア</p>
+          <p>
+            世の中が少しでも便利になるようなサービスを世の中に提供して、人々が自分や家族に使う時間を増やしたい。
+          </p>
+          <p>
+            具体的になりたいものとしては、<span>フロントエンドエンジニア</span>
+            もしくは、<span>バックエンドエンジニア</span>です。
+          </p>
         </DetailsText>
 
         <h2>利用可能な言語</h2>
         <DetailsText>
           <ul>
             {language.map((data, index) => {
-              return <li key={index}>{data}</li>;
+              return (
+                <li key={index}>
+                  <span>{data}</span>
+                </li>
+              );
             })}
           </ul>
         </DetailsText>
@@ -64,23 +86,18 @@ export default function history() {
         <DetailsText>
           <ul>
             {teck.map((data, index) => {
-              return <li key={index}>{data}</li>;
+              return (
+                <li key={index}>
+                  <span>{data}</span>
+                </li>
+              );
             })}
           </ul>
         </DetailsText>
         <h2>その他のスキル</h2>
-
         <DetailsText>
           <ul>
             {other.map((data, index) => {
-              return <li key={index}>{data}</li>;
-            })}
-          </ul>
-        </DetailsText>
-        <h2>読んできた本たち</h2>
-        <DetailsText>
-          <ul>
-            {books.map((data, index) => {
               return <li key={index}>{data}</li>;
             })}
           </ul>
@@ -123,6 +140,9 @@ const TextInfo = styled.div`
     color: white;
     h1 {
       font-size: 10rem;
+      span {
+        font-size: 100px;
+      }
     }
     h2 {
       font-size: 6rem;
@@ -153,12 +173,14 @@ const DetailsContainer = styled.div`
 `;
 
 const DetailsText = styled.div`
-  /* background-color: #4e4e4e20; */
   border-left: 2px solid #00cccc;
   font-size: 5rem;
-  /* border-radius: 0.5em; */
   color: #4e4e4e;
   padding: 1em;
   margin-bottom: 1.5em;
   margin-left: 1em;
+  span {
+    font-size: 5.4rem;
+    font-weight: bold;
+  }
 `;
