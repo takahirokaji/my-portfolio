@@ -2,14 +2,10 @@ import * as React from "react";
 import styled from "styled-components";
 import Image from "next/image";
 import frame from "../../public/iphone_frame.png";
-import Router from "next/router";
 import { firestore } from "../../lib/firebase";
 import { doc, getDoc, collection, getDocs } from "firebase/firestore";
-import { async } from "@firebase/util";
 
-export default function Detail(props) {
-  console.log(props);
-  const teckList = ["vue.js", "firebase", "TypeScript"];
+export default function Details(props) {
   const imageURL =
     "https://firebasestorage.googleapis.com/v0/b/k-s-port.appspot.com/o/pinplage_logo_eng.png?alt=media&token=cc987271-f4fa-408e-92a7-4df7d3397477";
   return (
@@ -71,30 +67,11 @@ export default function Detail(props) {
               </ul>
             </ExplainContainer>
           </Content>
-          {/* <Content>
-            <SubTitle>各種リンク</SubTitle>
-            <ExplainContainer>
-              <p>
-                静岡大学浜松キャンパス生のためのアプリケーション。キャンパス内にちらばる情報を「パンプラージュ」に集めて提供することでカンタンに情報を入手し、キャンパスライフを支援するアプリ！
-              </p>
-            </ExplainContainer>
-          </Content> */}
         </DetailsContainer>
       </GridContainer>
     </>
   );
 }
-
-export const getStaticProps = async ({ params }) => {
-  let details;
-  const docRef = doc(firestore, `works/${params.details}/details/info`);
-  const snap = await getDoc(docRef);
-  details = snap.data();
-
-  return {
-    props: { details },
-  };
-};
 
 export const getStaticPaths = async () => {
   const ref = collection(firestore, "works");
@@ -103,7 +80,17 @@ export const getStaticPaths = async () => {
   const paths = ids.map((id) => `/works/${id}`);
   return {
     paths,
-    fallback: true,
+    fallback: false,
+  };
+};
+
+export const getStaticProps = async ({ params }) => {
+  let details;
+  const docRef = doc(firestore, `works/${params.details}/details/info`);
+  const snap = await getDoc(docRef);
+  details = snap.data();
+  return {
+    props: { details },
   };
 };
 
@@ -122,7 +109,6 @@ const ApplicationSumpleContainer = styled.div`
 
 const DetailsContainer = styled.div`
   overflow-y: scroll;
-  /* max-width: 60vw; */
   font-size: 4px;
   padding: 5em;
 `;
