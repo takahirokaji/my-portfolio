@@ -13,7 +13,7 @@ export default function Home() {
   };
   return (
     <FlexContainer>
-      <Introduction>お越しいただきありがとうございます。</Introduction>
+      <Introduction>お越しいただきありがとうございます</Introduction>
       <ButtonContainer>
         {Links.map((data) => {
           return (
@@ -36,8 +36,7 @@ const FlexContainer = styled.div`
 `;
 
 const Introduction = styled.p`
-  font-size: 10rem;
-  max-width: 90%;
+  font-size: 8rem;
   padding: 0.75em;
   margin: 0.8em;
 `;

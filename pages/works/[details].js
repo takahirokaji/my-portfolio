@@ -10,8 +10,8 @@ export default function Details(props) {
     "https://firebasestorage.googleapis.com/v0/b/k-s-port.appspot.com/o/pinplage_logo_eng.png?alt=media&token=cc987271-f4fa-408e-92a7-4df7d3397477";
   return (
     <>
-      <GridContainer>
-        <ApplicationSumpleContainer>
+      {/* <GridContainer> */}
+      {/* <ApplicationSumpleContainer>
           <ApplicationFrame>
             <Image
               src={imageURL}
@@ -30,45 +30,45 @@ export default function Details(props) {
               ></Image>
             </FrameTest>
           </ApplicationFrame>
-        </ApplicationSumpleContainer>
+        </ApplicationSumpleContainer> */}
 
-        <DetailsContainer>
-          <Title>パンプラージュ</Title>
-          <Content>
-            <SubTitle>ロゴタイプ</SubTitle>
-            <ExplainContainer>
-              <p>Ill insert logo here</p>
-            </ExplainContainer>
-          </Content>
+      <DetailsContainer>
+        <Title>{props.details.title}</Title>
 
-          <Content>
-            <SubTitle>説明</SubTitle>
-            <ExplainContainer>
-              <p>{props.details.explain}</p>
-            </ExplainContainer>
-          </Content>
-          <Content>
-            <SubTitle>使用技術</SubTitle>
-            <ExplainContainer>
-              <ul>
-                {props.details.used_tech.map((value, index) => {
-                  return <li key={index}>{value}</li>;
-                })}
-              </ul>
-            </ExplainContainer>
-          </Content>
-          <Content>
-            <SubTitle>自分がやったこと</SubTitle>
-            <ExplainContainer>
-              <ul>
-                {props.details.what_I_did.map((value, index) => {
-                  return <li key={index}>{value}</li>;
-                })}
-              </ul>
-            </ExplainContainer>
-          </Content>
-        </DetailsContainer>
-      </GridContainer>
+        <Content>
+          <SubTitle>説明</SubTitle>
+          <ExplainContainer>
+            <p>{props.details.explain}</p>
+          </ExplainContainer>
+        </Content>
+        <Content>
+          <SubTitle>使用技術</SubTitle>
+          <ExplainContainer>
+            <ul>
+              {props.details.used_tech.map((value, index) => {
+                return <li key={index}>{value}</li>;
+              })}
+            </ul>
+          </ExplainContainer>
+        </Content>
+        <Content>
+          <SubTitle>自分がやったこと</SubTitle>
+          <ExplainContainer>
+            <ul>
+              {props.details.what_I_did.map((value, index) => {
+                return <li key={index}>{value}</li>;
+              })}
+            </ul>
+          </ExplainContainer>
+        </Content>
+        <Content>
+          <SubTitle>思い出話</SubTitle>
+          <ExplainContainer>
+            <p>{props.details.memories}</p>
+          </ExplainContainer>
+        </Content>
+      </DetailsContainer>
+      {/* </GridContainer> */}
     </>
   );
 }
@@ -89,17 +89,19 @@ export const getStaticProps = async ({ params }) => {
   const docRef = doc(firestore, `works/${params.details}/details/info`);
   const snap = await getDoc(docRef);
   details = snap.data();
+  details.title = params.details;
+  console.log(details);
+
   return {
     props: { details },
   };
 };
 
-const GridContainer = styled.div`
-  display: grid;
-  height: 80vh;
-
-  grid-template-columns: 3fr 5fr;
-`;
+// const GridContainer = styled.div`
+//   display: grid;
+//   height: 90vh;
+//   grid-template-columns: 3fr 5fr;
+// `;
 
 const ApplicationSumpleContainer = styled.div`
   display: flex;
@@ -108,9 +110,10 @@ const ApplicationSumpleContainer = styled.div`
 `;
 
 const DetailsContainer = styled.div`
-  overflow-y: scroll;
+  /* overflow-y: scroll; */
   font-size: 4px;
   padding: 5em;
+  max-width: 80vw;
 `;
 
 const Title = styled.h1`

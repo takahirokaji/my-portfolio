@@ -6,7 +6,9 @@ export default function Layout({ children }) {
     <>
       <Grid>
         <Header />
-        <Main>{children}</Main>
+        <Main>
+          <WidthAdjustment>{children}</WidthAdjustment>
+        </Main>
       </Grid>
     </>
   );
@@ -25,4 +27,11 @@ const Grid = styled.div`
 
 const Main = styled.main`
   overflow-y: scroll;
+  display: flex;
+  justify-content: center;
+  align-content: center;
+`;
+
+const WidthAdjustment = styled.div`
+  max-width: 1500px;
 `;
