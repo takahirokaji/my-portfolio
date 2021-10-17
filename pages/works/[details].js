@@ -67,6 +67,18 @@ export default function Details(props) {
             <p>{props.details.memories}</p>
           </ExplainContainer>
         </Content>
+        <Content>
+          <SubTitle>github</SubTitle>
+          <ExplainContainer>
+            <a
+              href={props.details.links.github}
+              target="_blank"
+              rel="noreferrer"
+            >
+              {props.details.links.github}
+            </a>
+          </ExplainContainer>
+        </Content>
       </DetailsContainer>
       {/* </GridContainer> */}
     </>
@@ -145,6 +157,10 @@ const ExplainContainer = styled.div`
       font-size: 4em;
       color: #4e4e4e;
     }
+  }
+  a {
+    font-size: 4em;
+    color: blue;
   }
 `;
 
