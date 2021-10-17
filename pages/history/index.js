@@ -3,13 +3,14 @@ import styled from "styled-components";
 import Image from "next/image";
 
 export default function history() {
-  const language = [["html5"], "css3", "sass", "javascript", "Ruby"];
+  const language = [["html5"], "css3", "sass", "javascript(ES6)", "Ruby"];
   const teck = [
     "Vue.js",
     "React.js",
     "Nuxt.js",
     "Next.js",
     "Firebase",
+    "google cloud functions",
     "github",
     "Ruby on rails",
     "Docker",
