@@ -70,7 +70,11 @@ export default function Details(props) {
         <Content>
           <SubTitle>github</SubTitle>
           <ExplainContainer>
-            <a href={props.details.links.github} target="_blank">
+            <a
+              href={props.details.links.github}
+              target="_blank"
+              rel="noreferrer"
+            >
               {props.details.links.github}
             </a>
           </ExplainContainer>
