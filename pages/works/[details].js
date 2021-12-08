@@ -1,87 +1,175 @@
 import * as React from "react";
+import { useState } from "react";
 import styled from "styled-components";
 import Image from "next/image";
 import frame from "../../public/iphone_frame.png";
 import { firestore } from "../../lib/firebase";
+import "keen-slider/keen-slider.min.css";
+import { useKeenSlider } from "keen-slider/react";
 import { doc, getDoc, collection, getDocs } from "firebase/firestore";
 
 export default function Details(props) {
-  const imageURL =
-    "https://firebasestorage.googleapis.com/v0/b/k-s-port.appspot.com/o/pinplage_logo_eng.png?alt=media&token=cc987271-f4fa-408e-92a7-4df7d3397477";
+  const [currentSlide, setCurrentSlide] = useState(0);
+  const [loaded, setLoaded] = useState(false);
+  const [sliderRef, instanceRef] = useKeenSlider({
+    initial: 0,
+    slideChanged(slider) {
+      setCurrentSlide(slider.track.details.rel);
+    },
+    created() {
+      setLoaded(true);
+    },
+  });
   return (
     <>
-      {/* <GridContainer> */}
-      {/* <ApplicationSumpleContainer>
-          <ApplicationFrame>
-            <Image
-              src={imageURL}
-              alt={"this is pinplage Image"}
-              width={200}
-              height={432.85}
-              objectFit={"contain"}
-            ></Image>
-            <FrameTest>
-              <Image
-                src={frame}
-                alt={"this is pinplage Image"}
-                z
-                width={250}
-                height={505}
-              ></Image>
-            </FrameTest>
-          </ApplicationFrame>
-        </ApplicationSumpleContainer> */}
-
-      <DetailsContainer>
-        <Title>{props.details.title}</Title>
-
-        <Content>
-          <SubTitle>説明</SubTitle>
-          <ExplainContainer>
-            <p>{props.details.explain}</p>
-          </ExplainContainer>
-        </Content>
-        <Content>
-          <SubTitle>使用技術</SubTitle>
-          <ExplainContainer>
-            <ul>
-              {props.details.used_tech.map((value, index) => {
-                return <li key={index}>{value}</li>;
+      <GridContainer>
+        <ApplicationSumpleContainer>
+          <NavigationWrapper>
+            <div ref={sliderRef} className="keen-slider">
+              {props.details.samples.map((sampleURL) => {
+                return (
+                  <div class="keen-slider__slide">
+                    <Image
+                      src={sampleURL}
+                      alt={"this is pinplage Image"}
+                      width={400}
+                      height={867}
+                      priority={true}
+                      loading="eager"
+                      objectFit={"contain"}
+                    ></Image>
+                  </div>
+                );
               })}
-            </ul>
-          </ExplainContainer>
-        </Content>
-        <Content>
-          <SubTitle>自分がやったこと</SubTitle>
-          <ExplainContainer>
-            <ul>
-              {props.details.what_I_did.map((value, index) => {
-                return <li key={index}>{value}</li>;
+            </div>
+            {loaded && instanceRef.current && (
+              <>
+                <Arrow
+                  left
+                  onClick={(e) =>
+                    e.stopPropagation() || instanceRef.current?.prev()
+                  }
+                  disabled={currentSlide === 0}
+                />
+
+                <Arrow
+                  onClick={(e) =>
+                    e.stopPropagation() || instanceRef.current?.next()
+                  }
+                  disabled={
+                    currentSlide ===
+                    instanceRef.current.track.details.slides.length - 1
+                  }
+                />
+              </>
+            )}
+          </NavigationWrapper>
+          {loaded && instanceRef.current && (
+            <Dots>
+              {[
+                ...Array(
+                  instanceRef.current.track.details.slides.length
+                ).keys(),
+              ].map((idx) => {
+                return (
+                  <button
+                    key={idx}
+                    onClick={() => {
+                      instanceRef.current?.moveToIdx(idx);
+                    }}
+                    className={"dot" + (currentSlide === idx ? " active" : "")}
+                  ></button>
+                );
               })}
-            </ul>
-          </ExplainContainer>
-        </Content>
-        <Content>
-          <SubTitle>思い出話</SubTitle>
-          <ExplainContainer>
-            <p>{props.details.memories}</p>
-          </ExplainContainer>
-        </Content>
-        <Content>
-          <SubTitle>github</SubTitle>
-          <ExplainContainer>
-            <a
-              href={props.details.links.github}
-              target="_blank"
-              rel="noreferrer"
-            >
-              {props.details.links.github}
-            </a>
-          </ExplainContainer>
-        </Content>
-      </DetailsContainer>
-      {/* </GridContainer> */}
+            </Dots>
+          )}
+        </ApplicationSumpleContainer>
+
+        <DetailsContainer>
+          <Title>{props.details.title}</Title>
+
+          <Content>
+            <SubTitle>説明</SubTitle>
+            <ExplainContainer>
+              <p>{props.details.explain}</p>
+            </ExplainContainer>
+          </Content>
+          <Content>
+            <SubTitle>使用技術</SubTitle>
+            <ExplainContainer>
+              <ul>
+                {props.details.used_tech.map((value, index) => {
+                  return <li key={index}>{value}</li>;
+                })}
+              </ul>
+            </ExplainContainer>
+          </Content>
+          <Content>
+            <SubTitle>自分がやったこと</SubTitle>
+            <ExplainContainer>
+              <ul>
+                {props.details.what_I_did.map((value, index) => {
+                  return <li key={index}>{value}</li>;
+                })}
+              </ul>
+            </ExplainContainer>
+          </Content>
+          <Content>
+            <SubTitle>思い出話</SubTitle>
+            <ExplainContainer>
+              <p>{props.details.memories}</p>
+            </ExplainContainer>
+          </Content>
+          <Content>
+            <SubTitle>github</SubTitle>
+            <ExplainContainer>
+              <a
+                href={props.details.links.github}
+                target="_blank"
+                rel="noreferrer"
+              >
+                {props.details.links.github}
+              </a>
+            </ExplainContainer>
+          </Content>
+          {props.details.links.youtube && (
+            <Content>
+              <SubTitle>YouTube</SubTitle>
+              <ExplainContainer>
+                <a
+                  href={props.details.links.youtube}
+                  target="_blank"
+                  rel="noreferrer"
+                >
+                  {props.details.links.youtube}
+                </a>
+              </ExplainContainer>
+            </Content>
+          )}
+        </DetailsContainer>
+      </GridContainer>
     </>
+  );
+}
+
+function Arrow(props) {
+  const disabeld = props.disabled ? " arrow--disabled" : "";
+  return (
+    <svg
+      onClick={props.onClick}
+      className={`arrow ${
+        props.left ? "arrow--left" : "arrow--right"
+      } ${disabeld}`}
+      xmlns="http://www.w3.org/2000/svg"
+      viewBox="0 0 24 24"
+    >
+      {props.left && (
+        <path d="M16.67 0l2.83 2.829-9.339 9.175 9.339 9.167-2.83 2.829-12.17-11.996z" />
+      )}
+      {!props.left && (
+        <path d="M5 3l3.057-3 11.943 12-11.943 12-3.057-3 9-9z" />
+      )}
+    </svg>
   );
 }
 
@@ -102,27 +190,31 @@ export const getStaticProps = async ({ params }) => {
   const snap = await getDoc(docRef);
   details = snap.data();
   details.title = params.details;
-  console.log(details);
 
   return {
     props: { details },
   };
 };
 
-// const GridContainer = styled.div`
-//   display: grid;
-//   height: 90vh;
-//   grid-template-columns: 3fr 5fr;
-// `;
+const GridContainer = styled.div`
+  display: grid;
+  height: 90vh;
+  grid-template-columns: 3fr 5fr;
+`;
 
 const ApplicationSumpleContainer = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
+  flex-direction: column;
+  height: 90vh;
+  .keen-slider {
+    max-width: 300px;
+  }
 `;
 
 const DetailsContainer = styled.div`
-  /* overflow-y: scroll; */
+  overflow-y: scroll;
   font-size: 4px;
   padding: 5em;
   max-width: 80vw;
@@ -164,13 +256,24 @@ const ExplainContainer = styled.div`
   }
 `;
 
-const ApplicationFrame = styled.div`
+const NavigationWrapper = styled.div`
   position: relative;
-  padding: 15px;
 `;
 
-const FrameTest = styled.div`
-  position: absolute;
-  top: 0;
-  left: 0;
+const Dots = styled.div`
+  display: flex;
+  justify-content: center;
+  .dot {
+    border: none;
+    width: 10px;
+    height: 10px;
+    background: #c5c5c5;
+    border-radius: 50%;
+    margin: 0 5px;
+    padding: 5px;
+    cursor: pointer;
+  }
+  .dot.active {
+    background: #01dada;
+  }
 `;
