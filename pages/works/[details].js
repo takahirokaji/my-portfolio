@@ -28,7 +28,7 @@ export default function Details(props) {
             <div ref={sliderRef} className="keen-slider">
               {props.details.samples.map((sampleURL) => {
                 return (
-                  <div class="keen-slider__slide">
+                  <div className="keen-slider__slide" key="sampleURL">
                     <Image
                       src={sampleURL}
                       alt={"this is pinplage Image"}
