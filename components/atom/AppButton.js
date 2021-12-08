@@ -8,7 +8,8 @@ const AppButton = (props) => {
 };
 
 const Button = styled.button`
-  font-size: 6rem;
+  width: 100%;
+  font-size: 4rem;
   padding: 0.5em 1em;
   border: none;
   background-color: #ffffff00;

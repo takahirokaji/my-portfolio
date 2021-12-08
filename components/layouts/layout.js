@@ -27,9 +27,23 @@ const Grid = styled.div`
 
 const Main = styled.main`
   overflow-y: scroll;
+  overflow-x: hidden;
   display: flex;
   justify-content: center;
   align-content: center;
+  ::-webkit-scrollbar {
+    width: 10px;
+  }
+
+  ::-webkit-scrollbar-track {
+    background-color: #fff;
+    border-radius: 100px;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    background-color: #50dada;
+    border-radius: 100px;
+  }
 `;
 
 const WidthAdjustment = styled.div`

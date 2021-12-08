@@ -199,9 +199,11 @@ export const getStaticProps = async ({ params }) => {
 };
 
 const GridContainer = styled.div`
-  display: grid;
-  height: 90vh;
-  grid-template-columns: 3fr 5fr;
+  @media screen and (min-width: 1024px) {
+    display: grid;
+    height: 90vh;
+    grid-template-columns: 3fr 5fr;
+  }
 `;
 
 const ApplicationSumpleContainer = styled.div`
@@ -218,10 +220,25 @@ const ApplicationSumpleContainer = styled.div`
 `;
 
 const DetailsContainer = styled.div`
-  overflow-y: scroll;
+  @media screen and (min-width: 1024px) {
+    overflow-y: scroll;
+  }
+
+  ::-webkit-scrollbar {
+    width: 10px;
+  }
+
+  ::-webkit-scrollbar-track {
+    background-color: #e4e4e4;
+    border-radius: 100px;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    background-color: #50dada;
+    border-radius: 100px;
+  }
   font-size: 4px;
   padding: 5em;
-  max-width: 80vw;
 `;
 
 const Title = styled.h1`
