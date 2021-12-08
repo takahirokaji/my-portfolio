@@ -17,7 +17,13 @@ export default function Details(props) {
       setCurrentSlide(slider.track.details.rel);
     },
     created() {
-      setLoaded(true);
+      const image = new Image();
+
+      image.onload = () => {
+        setLoaded(true);
+      };
+
+      image.src = props.details.samples[0];
     },
   });
   return (
