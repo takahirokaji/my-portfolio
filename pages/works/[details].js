@@ -17,13 +17,9 @@ export default function Details(props) {
       setCurrentSlide(slider.track.details.rel);
     },
     created() {
-      const image = new Image();
-
-      image.onload = () => {
+      setTimeout(() => {
         setLoaded(true);
-      };
-
-      image.src = props.details.samples[0];
+      }, 1000);
     },
   });
   return (
@@ -34,7 +30,7 @@ export default function Details(props) {
             <div ref={sliderRef} className="keen-slider">
               {props.details.samples.map((sampleURL) => {
                 return (
-                  <div className="keen-slider__slide" key="sampleURL">
+                  <div className="keen-slider__slide" key={sampleURL}>
                     <Image
                       src={sampleURL}
                       alt={"this is pinplage Image"}
@@ -216,6 +212,8 @@ const ApplicationSumpleContainer = styled.div`
   height: 90vh;
   .keen-slider {
     max-width: 300px;
+    width: 300px;
+    height: 650.25px;
   }
 `;
 
