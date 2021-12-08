@@ -63,3 +63,26 @@ ul {
 :root {
   --client-Height: 100vh;
 }
+
+.arrow {
+  width: 30px;
+  height: 30px;
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  -webkit-transform: translateY(-50%);
+  fill: #50dada;
+  cursor: pointer;
+}
+
+.arrow--left {
+  left: -40px;
+}
+
+.arrow--right {
+  right: -40px;
+}
+
+.arrow--disabled {
+  fill: rgba(169, 169, 169, 0.5);
+}
