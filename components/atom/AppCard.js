@@ -32,15 +32,17 @@ const Card = styled.div`
     transition: filter 0.5s;
   }
   &:hover {
-    cursor: pointer;
-    .app-image {
-      filter: none;
-      transition: filter 1s;
-    }
-    h1,
-    h2 {
-      opacity: 0;
-      transition: 1s;
+    @media screen and (min-width: 1024px) {
+      cursor: pointer;
+      .app-image {
+        filter: none;
+        transition: filter 1s;
+      }
+      h1,
+      h2 {
+        opacity: 0;
+        transition: 1s;
+      }
     }
   }
 `;
