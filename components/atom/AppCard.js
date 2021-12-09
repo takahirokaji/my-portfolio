@@ -26,21 +26,33 @@ const AppCard = (props) => {
 const Card = styled.div`
   margin: 1.5%;
   position: relative;
+  border-radius: 10px;
   .app-image {
     border-radius: 10px;
     filter: brightness(0.4);
-    transition: filter 0.5s;
+    @media screen and (min-width: 1024px) {
+      transition: filter 0.5s;
+    }
   }
   &:hover {
-    cursor: pointer;
-    .app-image {
-      filter: none;
-      transition: filter 1s;
+    @media screen and (min-width: 1024px) {
+      cursor: pointer;
+      .app-image {
+        filter: none;
+        transition: filter 1s;
+      }
+      h1,
+      h2 {
+        opacity: 0;
+        transition: 1s;
+      }
     }
-    h1,
-    h2 {
-      opacity: 0;
-      transition: 1s;
+  }
+  &:active {
+    @media screen and (max-width: 1024px) {
+      .app-image {
+        filter: brightness(0.6);
+      }
     }
   }
 `;
