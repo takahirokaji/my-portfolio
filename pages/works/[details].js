@@ -213,9 +213,13 @@ const ApplicationSumpleContainer = styled.div`
   flex-direction: column;
   height: 90vh;
   .keen-slider {
-    max-width: 300px;
-    width: 300px;
-    height: 650.25px;
+    width: 250px;
+    height: 542px;
+    @media screen and (min-width: 1024px) {
+      max-width: 300px;
+      width: 300px;
+      height: 650.25px;
+    }
   }
 `;
 
