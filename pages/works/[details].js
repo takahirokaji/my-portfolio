@@ -2,7 +2,6 @@ import * as React from "react";
 import { useState } from "react";
 import styled from "styled-components";
 import Image from "next/image";
-import frame from "../../public/iphone_frame.png";
 import { firestore } from "../../lib/firebase";
 import "keen-slider/keen-slider.min.css";
 import { useKeenSlider } from "keen-slider/react";
@@ -22,6 +21,7 @@ export default function Details(props) {
       }, 1000);
     },
   });
+
   return (
     <>
       <GridContainer>
