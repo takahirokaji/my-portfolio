@@ -35,7 +35,7 @@ export default function history() {
         <Icon>
           <Image
             className="icon"
-            src="https://firebasestorage.googleapis.com/v0/b/k-s-port.appspot.com/o/IMG_2646.jpg?alt=media&token=717db28b-3d46-48b9-809e-f994ee2daaa8"
+            src="https://firebasestorage.googleapis.com/v0/b/k-s-port.appspot.com/o/IMG_2930.jpg?alt=media&token=37d86d99-efde-470d-902c-e4707ca29870"
             width={200}
             height={200}
             quality={100}
