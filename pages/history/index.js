@@ -56,7 +56,7 @@ export default function history() {
         <DetailsText>
           <p>
             こんにちわ。静岡大学総合科学技術研究科１年の梶
-            貴広です。私は、日々の生活を改善するアプリをいくつか作成しました。このK's
+            貴広です。私は、日々の生活を改善するアプリをいくつか作成しました。このKs
             portでは今まで制作したアプリケーションを紹介させていただきます。
             <WordLink onClick={() => pushPage("works")}>works</WordLink>
             から制作物一覧を閲覧していただけると幸いです。
