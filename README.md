@@ -1,4 +1,4 @@
-## this is portfolio made by takahirokaji
+## this is my portfolio
 
 pls visit this link
 https://my-portfolio-takahirokaji.vercel.app
