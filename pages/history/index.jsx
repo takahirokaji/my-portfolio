@@ -9,8 +9,6 @@ export default function history() {
   };
   const language = ["html5", "css3", "sass", "javascript", "Ruby"];
   const teck = [
-    "Vue.js",
-    "Nuxt.js",
     "React.js",
     "Next.js",
     "Firebase Cloud Firestore ",

@@ -27,3 +27,7 @@ const Button = styled.button`
 `;
 
 export default AppButton;
+
+const outPut = () => {
+  console.log("kaji");
+};

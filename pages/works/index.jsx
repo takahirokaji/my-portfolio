@@ -1,7 +1,5 @@
 import * as React from "react";
-import styles from "../../styles/Home.module.scss";
 import AppCard from "../../components/atom/AppCard";
-import Link from "next/link";
 import { useRouter } from "next/router";
 import styled from "styled-components";
 import { collection, getDocs, query, orderBy } from "firebase/firestore";
@@ -11,7 +9,7 @@ export default function Home(props) {
   const router = useRouter();
 
   const handler = (id) => {
-    router.push({ pathname: `works/${id}` });
+    router.push({ pathname: `works/${id}` }, undefined, { scroll: true });
   };
 
   return (
