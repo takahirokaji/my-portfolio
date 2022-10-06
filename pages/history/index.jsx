@@ -9,8 +9,6 @@ export default function history() {
   };
   const language = ["html5", "css3", "sass", "javascript", "Ruby"];
   const teck = [
-    "Vue.js",
-    "Nuxt.js",
     "React.js",
     "Next.js",
     "Firebase Cloud Firestore ",
@@ -45,7 +43,7 @@ export default function history() {
         <TextInfo>
           <div>
             <h1>梶 貴広</h1>
-            <h2>現在：静岡大学　総合科学技術研究科 1年</h2>
+            <h2>現在：静岡大学　総合科学技術研究科 2年</h2>
             <h2>21年3月：静岡大学　情報学部 行動情報学科 卒業</h2>
             <h2>17年3月：静岡県立沼津東高等学校卒業</h2>
           </div>
@@ -55,7 +53,7 @@ export default function history() {
         <h1>自己紹介</h1>
         <DetailsText>
           <p>
-            こんにちわ。静岡大学総合科学技術研究科１年の梶
+            こんにちわ。静岡大学総合科学技術研究科2年の梶
             貴広です。私は、日々の生活を改善するアプリをいくつか作成しました。このKs
             portでは今まで制作したアプリケーションを紹介させていただきます。
             <WordLink onClick={() => pushPage("works")}>works</WordLink>

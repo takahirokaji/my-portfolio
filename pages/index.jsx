@@ -13,7 +13,7 @@ export default function Home() {
   };
   return (
     <FlexContainer>
-      <Introduction>お越しいただき誠にありがとうございます</Introduction>
+      <Introduction>お越しいただき、ありがとうございます</Introduction>
       <ExplainContainer>
         <ExplainCard>
           <Explain>

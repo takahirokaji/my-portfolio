@@ -1,7 +1,8 @@
 import "modern-css-reset/dist/reset.min.css";
 import "../styles/globals.scss";
 import Head from "next/head";
-import Layout from "../components/layouts/layout.js";
+import Layout from "../components/layouts/layout";
+
 function MyApp({ Component, pageProps }) {
   return (
     <>
